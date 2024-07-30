@@ -1,0 +1,24 @@
+<h2 class="text-3xl font-bold mb-4">Contact List</h2>
+
+<table class="table-auto w-full border-collapse border border-slate-100">
+  <thead class="font-bold text-2xl border">
+    <td>Name</td>
+    <td>Email</td>
+  </thead>
+  <tbody class="border">
+    <% if (contacts.length < 1) { %>
+    <p>Contact not found</p>
+    <% } else { %> <% contacts.forEach(contact=> { %>
+    <tr class="hover:bg-blue-400 text-xl">
+      <td><%= contact.name %></td>
+      <td><%= contact.email %></td>
+    </tr>
+    <!-- <ul class="">
+      <li class="">
+        <b>Name:</b>
+        <b>Email:</b>
+      </li>
+    </ul> -->
+    <% }) %> <% } %>
+  </tbody>
+</table>
