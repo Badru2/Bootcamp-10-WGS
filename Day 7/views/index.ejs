@@ -1,0 +1,111 @@
+<!-- Create toggle -->
+<div class="w-1/2 mx-auto mb-4">
+  <button
+  id="open-modal-button"
+    data-modal-target="create-modal"
+    data-modal-toggle="create-modal"
+    class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    type="button"
+  >
+    New Contact
+  </button>
+
+  <h2 class="text-2xl font-bold">Contact List</h2>
+</div>
+
+<script>
+  
+  if (modalOpen == true) { 
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('open-modal-button').click();
+    });
+  } 
+  </script>
+  
+
+
+<div class="shadow-lg w-1/2 p-5 mx-auto">
+  <table class="w-full mx-auto">
+    <thead>
+      <tr class="font-bold border-b">
+        <td>Nama</td>
+        <td>Email</td>
+        <td>Action</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (contacts.length < 1) { %>
+      <p>Contact not found</p>
+      <% } else { %> <% contacts.forEach(contact => { %>
+      <tr class="border-b h-9 hover:bg-slate-300">
+        <td><%= contact.name %></td>
+        <td><%= contact.email %></td>
+        <td class="flex space-x-3">
+          <button
+            data-modal-target="delete-modal-<%= contact.id %>"
+            data-modal-toggle="delete-modal-<%= contact.id %>"
+            class="px-5 py-1 bg-red-500 rounded-sm font-bold text-white"
+            type="button"
+          >
+            Delete
+          </button>
+          <button
+            data-modal-target="detail-modal-<%= contact.id %>"
+            data-modal-toggle="detail-modal-<%= contact.id %>"
+            class="px-5 py-1 bg-blue-500 rounded-sm font-bold text-white"
+            type="button"
+          >
+            Detail
+          </button>
+          <!-- <button
+        data-modal-target="edit-modal-<%= contact.id %>"
+        data-modal-toggle="edit-modal-<%= contact.id %>"
+        class="px-5 py-1 bg-yellow-300 rounded-sm font-bold text-white"
+        type="button"
+        >
+        Edit
+      </button> -->
+          <a
+            href="/contact/edit/<%= contact.id %>"
+            class="px-5 py-1 bg-yellow-300 rounded-sm font-bold text-white"
+            >Edit</a
+          >
+        </td>
+      </tr>
+      <% }) %> <% } %>
+    </tbody>
+  </table>
+</div>
+<!-- pages -->
+
+<div class="pagination">
+  <% if (pageCount > 1) { %>
+  <ul>
+    <% if (page > 1) { %>
+    <li class="">
+      <a href="?page=<%= page - 1 %>&limit=<%= limit %>">&laquo; Previous</a>
+    </li>
+    <% } %> <% pages.forEach(p => { %>
+    <li class="<%= p === page ? 'active' : '' %>">
+      <a href="?page=<%= p %>&limit=<%= limit %>"><%= p %></a>
+    </li>
+    <% }) %> <% if (page < pageCount) { %>
+    <li>
+      <a href="?page=<%= page + 1 %>&limit=<%= limit %>">Next &raquo;</a>
+    </li>
+    <% } %>
+  </ul>
+  <% } %>
+</div>
+
+<!-- Create modal -->
+<%- include('modals/modal-create.ejs') %>
+
+<!-- Modal Delete -->
+<%- include('modals/modal-delete.ejs') %>
+
+<!-- Modal Detail -->
+<%- include('modals/modal-detail.ejs') %>
+
+<!-- Modal Edit -->
+<%- include('modals/modal-edit.ejs') %>

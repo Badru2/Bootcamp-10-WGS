@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-paginate": "^1.0.2",
+    "express-validator": "^7.1.0",
+    "flowbite": "^2.4.1",
+    "method-override": "^3.0.0",
+    "preline": "^2.4.1"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.7"
+  }
+}

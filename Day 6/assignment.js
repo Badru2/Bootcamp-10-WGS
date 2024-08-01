@@ -31,6 +31,7 @@ app.get("/", (req, res) => {
     });
   });
 });
+
 app.use("/", (req, res) => {
   res.status(404);
   res.send("page not found: 404");

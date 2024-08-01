@@ -1,0 +1,27 @@
+.pagination {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.pagination ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.pagination li {
+  display: inline;
+  margin: 0 5px;
+}
+
+.pagination a {
+  text-decoration: none;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  color: #007bff;
+}
+
+.pagination .active a {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
