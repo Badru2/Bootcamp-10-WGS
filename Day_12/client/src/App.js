@@ -1,65 +1,28 @@
 import "./App.css";
-import { faker } from "https://esm.sh/@faker-js/faker";
 import Navigation from "./components/navigation";
+import { Component } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Clicked from "./pages/Clicked";
+import Time from "./pages/Time";
 
-function App() {
-  const name = "Hilal Badru";
-  const batch = "Batch 10";
-  const randomNames = ["Dadang", "Udin", "Tatang"];
-
-  return (
-    <>
-      <Navigation />
-
-      <div className="mt-5 mx-5">
-        <div className="">
-          <h2 className="text-xl">
-            Hi Nama Saya <b>{name}</b>
-          </h2>
-          <h2 className="text-xl">
-            Saya peserta bootcamp <b>{batch}</b>
-          </h2>
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <Navigation />
+        <div className="px-4 mt-4">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/clicked" element={<Clicked />} />
+            <Route path="/time" element={<Time />} />
+          </Routes>
         </div>
-
-        <div className="mt-12">
-          {randomNames.map((randomName, index) => {
-            const currentTime = new Date();
-            const modifiedTime = new Date(
-              currentTime.getTime() - 30 * 40000 * (index + 1)
-            );
-            return (
-              <div className="ui comments" key={randomName}>
-                <div className="comment">
-                  <a href="./" className="avatar">
-                    <img
-                      src={faker.image.cats(500, 500, true)}
-                      alt={faker.image.abstract()}
-                    />
-                  </a>
-                  <div className="content">
-                    <a href="./" className="author">
-                      {randomName}
-                    </a>
-                    <div className="metadata">
-                      <span className="date">
-                        {modifiedTime.toLocaleTimeString()}
-                      </span>
-                    </div>
-                    <div className="text">{faker.lorem.sentence()}</div>
-                    <div className="actions">
-                      <a href="./" className="reply">
-                        Reply
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </>
-  );
+      </Router>
+    );
+  }
 }
 
 export default App;
