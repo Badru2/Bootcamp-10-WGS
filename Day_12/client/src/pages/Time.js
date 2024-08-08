@@ -14,7 +14,6 @@ function Time() {
   return (
     <div>
       <p>
-        {" "}
         {dateState.toLocaleDateString("id-ID", {
           day: "numeric",
           month: "long",

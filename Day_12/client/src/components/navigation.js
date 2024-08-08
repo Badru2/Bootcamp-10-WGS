@@ -11,6 +11,8 @@ class Navigation extends Component {
           <Link to={"/about"}>About</Link>
           <Link to={"/clicked"}>Clicked</Link>
           <Link to={"/time"}>Time</Link>
+          <Link to={"/contact"}>Contact</Link>
+          <Link to={"/api"}>API</Link>
         </div>
       </nav>
     );
