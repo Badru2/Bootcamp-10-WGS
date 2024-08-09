@@ -34,6 +34,28 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+
+    <style>
+      .my-masonry-grid {
+        display: flex;
+        margin-left: -15px; /* Offset for gutter size */
+        width: auto;
+      }
+
+      .my-masonry-grid_column {
+        padding-left: 15px; /* Gutter size */
+        background-clip: padding-box;
+      }
+
+      .grid-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 8px; /* Optional: round corners */
+        margin-bottom: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add some shadow */
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
