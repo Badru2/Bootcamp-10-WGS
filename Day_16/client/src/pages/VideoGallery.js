@@ -7,7 +7,7 @@ const VideoGallery = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    fetchVideos("totk"); // Default search on component mount
+    fetchVideos("mh wild");
   }, []);
 
   const fetchVideos = async (query) => {
@@ -38,7 +38,7 @@ const VideoGallery = () => {
 
   return (
     <div>
-      <form onSubmit={handleSearch}>
+      <form onSubmit={handleSearch} className="bg-red-600 px-5 py-4 w-full">
         <input
           type="text"
           value={searchTerm}
@@ -48,7 +48,7 @@ const VideoGallery = () => {
         <button type="submit">Search</button>
       </form>
 
-      <div className="flex">
+      <div className="flex mx-5">
         {selectedVideo && (
           <div className="selected-video">
             <iframe
@@ -66,7 +66,7 @@ const VideoGallery = () => {
           {videos.map((video) => (
             <div
               key={video.id.videoId}
-              className={`flex mb-3  ${
+              className={`flex mb-3 shadow-xl ${
                 video.id.videoId === selectedVideo.id.videoId ? "active" : ""
               }`}
               onClick={() => setSelectedVideo(video)}
@@ -76,7 +76,7 @@ const VideoGallery = () => {
                 alt={video.snippet.title}
                 className=" object-cover"
               />
-              <p className="w-[300px]">{video.snippet.title}</p>
+              <p className="w-[300px] ms-2">{video.snippet.title}</p>
             </div>
           ))}
         </div>
